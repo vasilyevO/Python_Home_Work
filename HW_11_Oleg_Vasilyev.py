@@ -7,27 +7,27 @@
 #         text = text.replace(char, str("*"))
 # print(text)
 
-# print("Задание 2. Количество символов.")
-# text = "Programming in python"
-# print("Строка:", text)
-# for char in text.casefold():
-#     print(f"Символ '{char}' встречается {text.count(char)} раз(а)") if text.count(char) > 1 else None
-#     text = text.replace(char, "")
+print("Задание 2. Количество символов.")
+text = "Programming in python"
+print("Строка:", text)
+for char in text.casefold():
+    print(f"Символ '{char}' встречается {text.count(char)} раз(а)") if text.count(char) > 1 else None
+    text = text.replace(char, "")
 
-# Вариант 2:
-# print("Задание 2. Количество символов.")
-#
-# text = "Programming in python".casefold()
-# printed = ""
-# print("Строка:", text)
-#
-# for char in text:
-#     if char in printed:
-#         continue
-#     count = text.count(char)
-#     if count > 1:
-#         print(f"Символ '{char}' встречается {count} раз(а)")
-#         printed += char
+Вариант 2:
+print("Задание 2. Количество символов.")
+
+text = "Programming in python".casefold()
+printed = ""
+print("Строка:", text)
+
+for char in text:
+    if char in printed:
+        continue
+    count = text.count(char)
+    if count > 1:
+        print(f"Символ '{char}' встречается {count} раз(а)")
+        printed += char
 
 
 # Увеличение чисел
