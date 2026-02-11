@@ -1,11 +1,11 @@
 
 
-# print("Задание 1. Звёздочки вместо чисел.")
-# text = "My number is 123-456-789"
-# for char in text:
-#     if char.isdigit():
-#         text = text.replace(char, str("*"))
-# print(text)
+print("Задание 1. Звёздочки вместо чисел.")
+text = "My number is 123-456-789"
+for char in text:
+    if char.isdigit():
+        text = text.replace(char, str("*"))
+print(text)
 
 print("Задание 2. Количество символов.")
 text = "Programming in python"
