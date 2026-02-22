@@ -6,11 +6,11 @@
 # Строки с цифрами только в конце: ['apple23', 'grape3']
 
 strings = ["apple23", "ban1ana45", "12cherry", "grape3", "blue23berry"]
-dig_string = []
+new_strings = []
 for item in strings:
-    if item[-2:].isdigit():
-        dig_string.append(item)
-print("Строки с цифрами только в конце: ", dig_string)
+    if item.rstrip("0123456789").isalpha():
+        new_strings.append(item)
+print("Строки с цифрами только в конце: ", new_strings)
 
 # 2. Удаление кратных
 # Напишите программу, которая удаляет из списка все значения, кратные числу, которое вводится пользователем.
