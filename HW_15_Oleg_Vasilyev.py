@@ -39,9 +39,11 @@ title = "Товар       |  Старая цена | Новая цена"
 print(title)
 print(len(title) * "-")
 
-for name, price in products:
+for i, (name, price) in enumerate(products):
     discount_price = price - (price * user_discount / 100)
+    products[i][1] = round(discount_price, 2)
     print(f"{name:<11} | {f'{price}$':^12} | {f'{discount_price:.2f}$':<10}")
+print("Начальный список с новой ценой: ", products, sep="\n")
 
 
 
