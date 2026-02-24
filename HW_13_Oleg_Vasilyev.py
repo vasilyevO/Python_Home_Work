@@ -1,15 +1,4 @@
 # Home work 13
-#Исправленное задание 2
-
-# Прогрессия увеличения
-# numbers = (3, 7, 2, 8, 5, 10, 1)
-# result = (numbers[0],)
-# max_value = numbers[0]
-#
-# for num in numbers[1:]:
-#     if num > max_value:
-#         result += (num,)
-#         max_value = num
 
 print("1. Прогрессия увеличения.")
 numbers = (3, 7, 2, 8, 5, 10, 1)
