@@ -52,31 +52,34 @@ string = "({[}])"
 
 string = "({[}])"
 print("Скобки:", string)
-
 stack = []
-valid = True
 
 for ch in string:
+
     if ch == "(" or ch == "[" or ch == "{":
         stack.append(ch)
+
     elif ch == ")" or ch == "]" or ch == "}":
+
         if len(stack) == 0:
-            valid = False
+            print("Валидны: False")
             break
+
         last = stack.pop()
 
         if ch == ")" and last != "(":
-            valid = False
+            print("Валидны: False")
             break
         elif ch == "]" and last != "[":
-            valid = False
+            print("Валидны: False")
             break
         elif ch == "}" and last != "{":
-            valid = False
+            print("Валидны: False")
             break
-
-if len(stack) != 0:
-    valid = False
-
-print("Валидны:", valid)
+else:
+    # Проверяем, остались ли открытые скобки
+    if len(stack) == 0:
+        print("Валидны: True")
+    else:
+        print("Валидны: False")
 
