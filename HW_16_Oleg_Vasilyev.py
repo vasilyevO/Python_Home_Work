@@ -77,7 +77,6 @@ for ch in string:
             print("Валидны: False")
             break
 else:
-    # Проверяем, остались ли открытые скобки
     if len(stack) == 0:
         print("Валидны: True")
     else:
