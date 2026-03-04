@@ -7,15 +7,16 @@
 # Пример вывода:
 # Обработанный список: ['hello', 'world', 'simple']
 
+import copy
 print("Задание 1. Одно слово")
 text_list = ["Hello", "Python Programming", "World", "Advanced Topics", "Simple"]
-new_list = []
+deep_copy = copy.deepcopy(text_list)
 for item in text_list:
     if len(item.split()) > 1:
-        continue
-    new_list.append(item.lower())
-print("Начальный список:", text_list)
-print("Обработанный список:", new_list)
+        text_list.remove(item)
+text_list = [item.lower() for item in text_list]
+print("Начальный список:", deep_copy)
+print("Обработанный список:", [item.lower() for item in text_list])
 
 # Дан список товаров с ценами. Программа должна применить скидку к каждому товару и
 # добавить в список элемент с новой ценой. В конце вывести таблицу с новой ценой.
@@ -40,9 +41,12 @@ print(title)
 print(len(title) * "-")
 
 for i, (name, price) in enumerate(products):
-    discount_price = price - (price * user_discount / 100)
-    products[i][1] = round(discount_price, 2)
-    print(f"{name:<11} | {f'{price}$':^12} | {f'{discount_price:.2f}$':<10}")
+    discount_price = round(price - (price * user_discount / 100), 2)
+    products[i].append(discount_price)
+
+for (name, price, new_price) in products:
+    print(f"{name:<11} | {f'{price}$':^12} | {f'{new_price}$':>10}")
+print()
 print("Начальный список с новой ценой: ", products, sep="\n")
 
 
