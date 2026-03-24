@@ -174,29 +174,29 @@ employees = [
 # Средняя зарплата {summe/div}""")
 #
 #
-# participants = [
-#  ("Иван", "Иванов", "Бег на 100м", 1, (0, 9.58)),
-#  ("Мария", "Петрова", "Плавание", 2, (1, 2.34)),
-#  ("Сергей", "Сидоров", "Велогонка", 3, (25, 15.10)),
-#  ("Анна", "Смирнова", "Марафон", 1, (120, 34.56)),
-#  ("Дмитрий", "Ковалёв", "Прыжки в длину", 1, (0, 8.25))]
-# spisok = ['Поздравляем с победой!', 'Отличный результат!', 'Вы заняли призовое место!', 'Удачи в следующий раз!']
-# for first_name, last_name, sporttype, place,  in participants:
-#     print(f'{first_name} {last_name}, спасибо за участие в {sport_type}! {spisok[place - 1]}')
-# print('\nОТЧЁТ ПО МЕРОПРИЯТИЮ:')
-# head = f'{'Имя':7} {'Фамилия':10} {'Вид спорта':15} {'Место':5} {'Время завершения'}'
-# print(head)
-# print('-' * len(head))
-# total_time = 0
-# for first_name, last_name, sport_type, place, end_time in participants:
-#     print(f'{first_name:7} {last_name:10} {sport_type:15} {place:5} {end_time[0]:>10}:{end_time[1]:>05.2f}')
-#     total_time += end_time[0] * 60 + end_time[1]
-# total_time = total_time / len(participants)
-# total_min = total_time // 60
-# total_sec = total_time % 60
-# print('-' * len(head))
-# print(f'Общее количество участников: {len(participants)}')
-# print(f'Среднее время завершения: {int(total_min)} мин {total_sec:.2f} сек')
+participants = [
+ ("Иван", "Иванов", "Бег на 100м", 1, (0, 9.58)),
+ ("Мария", "Петрова", "Плавание", 2, (1, 2.34)),
+ ("Сергей", "Сидоров", "Велогонка", 3, (25, 15.10)),
+ ("Анна", "Смирнова", "Марафон", 1, (120, 34.56)),
+ ("Дмитрий", "Ковалёв", "Прыжки в длину", 1, (0, 8.25))]
+spisok = ['Поздравляем с победой!', 'Отличный результат!', 'Вы заняли призовое место!', 'Удачи в следующий раз!']
+for first_name, last_name, sporttype, place,  in participants:
+    print(f'{first_name} {last_name}, спасибо за участие в {sport_type}! {spisok[place - 1]}')
+print('\nОТЧЁТ ПО МЕРОПРИЯТИЮ:')
+head = f'{'Имя':7} {'Фамилия':10} {'Вид спорта':15} {'Место':5} {'Время завершения'}'
+print(head)
+print('-' * len(head))
+total_time = 0
+for first_name, last_name, sport_type, place, end_time in participants:
+    print(f'{first_name:7} {last_name:10} {sport_type:15} {place:5} {end_time[0]:>10}:{end_time[1]:>05.2f}')
+    total_time += end_time[0] * 60 + end_time[1]
+total_time = total_time / len(participants)
+total_min = total_time // 60
+total_sec = total_time % 60
+print('-' * len(head))
+print(f'Общее количество участников: {len(participants)}')
+print(f'Среднее время завершения: {int(total_min)} мин {total_sec:.2f} сек')
 #
 # participants = [
 #  ("Иван", "Иванов", "Бег на 100м", 1, (0, 9.58)),
@@ -212,3 +212,25 @@ employees = [
 # print(head)
 # print('-' * len(head))
 # total_time = 0
+#
+# numbers = [5, 2, 3, 8, 4, 1, 2, 7]
+# even_list = []
+# result = []
+# even_index = 0
+# # 1. Собираем чётные
+# for item in numbers:
+#     if item % 2 == 0:
+#         even_list.append(item)
+# # 2. Сортирую по убыванию
+# even_list.sort(reverse=True)
+# # 3. Формирую новый список перебирая начальный, если встречается нечетный он добавляется в новый список result,
+# # если четный элемент, то берется элемент по индексу 0 из отсортированного списка и добавляется в новый список result последним,
+# # не нарушая позиций нечетных элементов.
+# for item in numbers:
+#     if item % 2 == 0:
+#         result.append(even_list[even_index])
+#         even_index += 1
+#     else:
+#         result.append(item)
+# print("Начальный список: ", numbers)
+# print("Список после сортировки:", result)
