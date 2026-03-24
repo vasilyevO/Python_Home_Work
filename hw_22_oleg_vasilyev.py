@@ -32,6 +32,7 @@ names = map(lambda order: order["product"], filtered)
 result = sorted(list(names))
 print(result)
 
+# Task 2
 print("\n 2. Статистика продаж")
 sales = [
     ("Laptop", 5, 1200),
