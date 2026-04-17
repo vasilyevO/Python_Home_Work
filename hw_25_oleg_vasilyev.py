@@ -1,24 +1,41 @@
 
 print("\n 1. Деление без ошибок")
 
-def safe_divide() -> None:
+
+def safe_divide(numerator_raw: str, denominator_raw: str) -> float:
     """
-    Запрашивает у пользователя два числа и выводит результат деления,
-    обрабатывая ошибки ввода и деления на ноль.
+    Performs division of two numbers provided as strings.
+
+    Args:
+        numerator_raw (str): The number to be divided.
+        denominator_raw (str): The number to divide by.
+
+    Returns:
+        float: The result of the division.
+
+    Raises:
+        ValueError: If the input strings cannot be converted to float.
+        ZeroDivisionError: If the denominator is zero.
     """
     try:
-        numerator = float(input("Введите делимое: "))
-        denominator = float(input("Введите делитель: "))
-        result = numerator / denominator
+        num = float(numerator_raw)
+        den = float(denominator_raw)
+        return num / den
 
-    except ValueError:
-        print("Ошибка: Введено некорректное число.")
-    except ZeroDivisionError:
-        print("Ошибка: Деление на ноль.")
-    else:
-        print(f"Результат деления: {result}")
+    except (ValueError, ZeroDivisionError) as e:
+        raise e
 
-safe_divide()
+try:
+    val1 = input("Введите делимое: ")
+    val2 = input("Введите делитель: ")
+
+    res = safe_divide(val1, val2)
+    print(f"Результат деления: {res}")
+
+except ValueError:
+    print("Ошибка: Вы ввели не число!")
+except ZeroDivisionError:
+    print("Ошибка: Нельзя делить на ноль!")
 
 
 print("\n 2. Логирование ошибок")
@@ -31,15 +48,38 @@ logging.basicConfig(
     encoding='utf-8'
 )
 
-def safe_divide():
-    try:
-        a = float(input("Введите делимое: "))
-        b = float(input("Введите делитель: "))
-        result = a / b
-        print(f"Результат: {result}")
-    except ValueError:
-        logging.error("Ошибка: Введено некорректное число.")
-    except ZeroDivisionError:
-        logging.error("Ошибка: Деление на ноль.")
 
-safe_divide()
+def safe_divide(numerator_raw: str, denominator_raw: str) -> float:
+    """
+    Performs division and logs errors to 'errors.log' before raising them.
+
+    Args:
+        numerator_raw (str): The number to be divided.
+        denominator_raw (str): The number to divide by.
+
+    Returns:
+        float: Result of the division.
+
+    Raises:
+        ValueError: If input is not a number.
+        ZeroDivisionError: If division by zero is attempted.
+    """
+    try:
+        num = float(numerator_raw)
+        den = float(denominator_raw)
+        return num / den
+
+    except (ValueError, ZeroDivisionError) as e:
+        logging.error(f"Division error: {e}")
+        raise e
+
+try:
+    val1 = input("Введите делимое: ")
+    val2 = input("Введите делитель: ")
+
+    res = safe_divide(val1, val2)
+    print(f"Результат: {res}")
+
+except Exception:
+    print("Произошла ошибка. Подробности записаны в errors.log")
+
