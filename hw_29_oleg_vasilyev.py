@@ -5,10 +5,10 @@ from itertools import islice
 
 def fibonacci() -> Iterator[int]:
     """
-    Бесконечный генератор последовательности Фибоначчи.
+    An infinite Fibonacci sequence generator.
 
     Yields:
-        Числа Фибоначчи по одному, начиная с 0.
+        The Fibonacci numbers, one by one, starting with 0.
     """
     a, b = 0, 1
     while True:
