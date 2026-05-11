@@ -1,78 +1,71 @@
 print("\n 1. Воспроизведение мультимедиа")
 
 class AudioFileMixin:
-    """Mixin for playing audio tracks."""
+    """Миксин для воспроизведения аудио треков."""
 
-    def play_audio(self) -> None:
-        """Displays a list of audio tracks. Requires the `audio_tracks` field."""
+    def play_audio(self) -> str:
+        """Возвращает строку с треками. Требует поле audio_tracks."""
         if not hasattr(self, "audio_tracks"):
             raise AttributeError("Отсутствует поле audio_tracks")
-        print(f"Воспроизведение аудио для {self.__class__.__name__}:")
-        for track in self.audio_tracks:
-            print(track)
+        tracks = "\n".join(self.audio_tracks)
+        return f"Воспроизведение аудио для {self.__class__.__name__}:\n{tracks}"
 
 class VideoFileMixin:
-    """Mixin for playing video files."""
+    """Миксин для воспроизведения видео файлов."""
 
-    def play_video(self) -> None:
-        """Displays a list of video files. Requires the video_files field."""
+    def play_video(self) -> str:
+        """Возвращает строку с видео. Требует поле video_files."""
         if not hasattr(self, "video_files"):
             raise AttributeError("Отсутствует поле video_files")
-        print(f"Воспроизведение видео для {self.__class__.__name__}:")
-        for video in self.video_files:
-            print(video)
+        videos = "\n".join(self.video_files)
+        return f"Воспроизведение видео для {self.__class__.__name__}:\n{videos}"
 
 class MediaPlayer(AudioFileMixin, VideoFileMixin):
-    """A media player that supports audio and video."""
+    """Медиаплеер с поддержкой аудио и видео."""
 
     def __init__(self) -> None:
         self.audio_tracks = ["Track 1", "Track 2"]
         self.video_files = ["Video 1", "Video 2"]
 
 player = MediaPlayer()
-player.play_audio()
-player.play_video()
+print(player.play_audio())
+print(player.play_video())
 
 
 print("\n 2. Устройства")
 class AudioFileMixin:
     """Mixin for playing audio tracks."""
 
-    def play_audio(self) -> None:
-        """Displays a list of audio tracks. Requires the `audio_tracks` field."""
+    def play_audio(self) -> str:
+        """Возвращает строку с треками. Требует поле audio_tracks."""
         if not hasattr(self, "audio_tracks"):
             raise AttributeError("Отсутствует поле audio_tracks")
-        print(f"Воспроизведение аудио для {self.__class__.__name__}:")
-        for track in self.audio_tracks:
-            print(track)
+        tracks = "\n".join(self.audio_tracks)
+        return f"Воспроизведение аудио для {self.__class__.__name__}:\n{tracks}"
 
 
 class VideoFileMixin:
-    """Mixin for playing video files."""
+    """Миксин для воспроизведения видео файлов."""
 
-    def play_video(self) -> None:
-        """Displays a list of video files. Requires the video_files field."""
+    def play_video(self) -> str:
+        """Возвращает строку с видео. Требует поле video_files."""
         if not hasattr(self, "video_files"):
             raise AttributeError("Отсутствует поле video_files")
-        print(f"Воспроизведение видео для {self.__class__.__name__}:")
-        for video in self.video_files:
-            print(video)
-
+        videos = "\n".join(self.video_files)
+        return f"Воспроизведение видео для {self.__class__.__name__}:\n{videos}"
 
 class MediaPlayer(AudioFileMixin):
-    """A media player that supports audio only."""
+    """Медиаплеер с поддержкой только аудио."""
 
     def __init__(self, tracks: list[str]) -> None:
         self.audio_tracks = tracks
 
-
 class Laptop(AudioFileMixin, VideoFileMixin):
-    """A laptop with audio and video support."""
+    """Ноутбук с поддержкой аудио и видео."""
 
     def __init__(self, audio_tracks: list[str], video_files: list[str]) -> None:
         self.audio_tracks = audio_tracks
         self.video_files = video_files
-
 
 tracks = ["track1.mp3", "track2.mp3"]
 movies = ["movie.mp4", "trailer.mov"]
@@ -80,6 +73,6 @@ movies = ["movie.mp4", "trailer.mov"]
 player = MediaPlayer(tracks)
 laptop = Laptop(tracks, movies)
 
-player.play_audio()
-laptop.play_audio()
-laptop.play_video()
+print(player.play_audio())
+print(laptop.play_audio())
+print(laptop.play_video())
