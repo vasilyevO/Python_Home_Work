@@ -30,8 +30,11 @@ print("\n 2. Проверка данных пользователя")
 
 class User:
     """"A user class with login and password validation."""
+    total_users: int = 0
+    MIN_PASSWORD_LENGTH: int = 5
 
     def __init__(self, username: str, password: str) -> None:
+
         """
         Initialises the user with data validation.
 
@@ -42,12 +45,14 @@ class User:
         Raises:
             ValueError: if the username is empty or the password is less than 5 characters long.
         """
-        if not username:
+        if not username.strip():
             raise ValueError(f"Invalid username: '{username}'.")
-        if len(password) < 5:
+        if len(password.strip()) < User.MIN_PASSWORD_LENGTH:
             raise ValueError(f"Invalid password: '{password}'.")
-        self.username = username
-        self.password = password
+
+        self.username = username.strip()
+        self.password = password.strip()
+        User.total_users += 1
 
     def __str__(self) -> str:
         """Returns the user's string representation."""
@@ -62,6 +67,12 @@ except ValueError as e:
 
 try:
     user2 = User("bob", "qwe")
+    print(user2)
+except ValueError as e:
+    print(f"ValueError: {e}")
+
+try:
+    user3 = User("bill", "     ")
     print(user2)
 except ValueError as e:
     print(f"ValueError: {e}")
