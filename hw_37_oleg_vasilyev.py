@@ -1,27 +1,27 @@
 print("\n 1. Воспроизведение мультимедиа")
 
 class AudioFileMixin:
-    """Миксин для воспроизведения аудио треков."""
+    """Mixin for playing audio tracks."""
 
     def play_audio(self) -> str:
-        """Возвращает строку с треками. Требует поле audio_tracks."""
+        """Returns a string containing the tracks. Requires the `audio_tracks` field."""
         if not hasattr(self, "audio_tracks"):
             raise AttributeError("Отсутствует поле audio_tracks")
         tracks = "\n".join(self.audio_tracks)
         return f"Воспроизведение аудио для {self.__class__.__name__}:\n{tracks}"
 
 class VideoFileMixin:
-    """Миксин для воспроизведения видео файлов."""
+    """Mixin for playing video files."""
 
     def play_video(self) -> str:
-        """Возвращает строку с видео. Требует поле video_files."""
+        """Returns a string containing the video. Requires the video_files field."""
         if not hasattr(self, "video_files"):
             raise AttributeError("Отсутствует поле video_files")
         videos = "\n".join(self.video_files)
         return f"Воспроизведение видео для {self.__class__.__name__}:\n{videos}"
 
 class MediaPlayer(AudioFileMixin, VideoFileMixin):
-    """Медиаплеер с поддержкой аудио и видео."""
+    """A media player that supports audio and video."""
 
     def __init__(self) -> None:
         self.audio_tracks = ["Track 1", "Track 2"]
@@ -37,7 +37,7 @@ class AudioFileMixin:
     """Mixin for playing audio tracks."""
 
     def play_audio(self) -> str:
-        """Возвращает строку с треками. Требует поле audio_tracks."""
+        """Returns a string containing the tracks. Requires the `audio_tracks` field."""
         if not hasattr(self, "audio_tracks"):
             raise AttributeError("Отсутствует поле audio_tracks")
         tracks = "\n".join(self.audio_tracks)
@@ -45,23 +45,23 @@ class AudioFileMixin:
 
 
 class VideoFileMixin:
-    """Миксин для воспроизведения видео файлов."""
+    """Mixin for playing video files."""
 
     def play_video(self) -> str:
-        """Возвращает строку с видео. Требует поле video_files."""
+        """Returns a string containing the video. Requires the video_files field."""
         if not hasattr(self, "video_files"):
             raise AttributeError("Отсутствует поле video_files")
         videos = "\n".join(self.video_files)
         return f"Воспроизведение видео для {self.__class__.__name__}:\n{videos}"
 
 class MediaPlayer(AudioFileMixin):
-    """Медиаплеер с поддержкой только аудио."""
+    """A media player that supports audio only."""
 
     def __init__(self, tracks: list[str]) -> None:
         self.audio_tracks = tracks
 
 class Laptop(AudioFileMixin, VideoFileMixin):
-    """Ноутбук с поддержкой аудио и видео."""
+    """A laptop with audio and video support."""
 
     def __init__(self, audio_tracks: list[str], video_files: list[str]) -> None:
         self.audio_tracks = audio_tracks
