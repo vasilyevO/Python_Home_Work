@@ -42,12 +42,12 @@ class BankAccount:
             raise ValueError("Not enough funds.")
         self.__balance -= amount
 
-    def get_balance(self) -> str:
+    def get_balance(self) -> float:
         """Returns a string containing the current balance."""
         return self.__balance
 
 account = BankAccount("Alice", 150)
-print(account.get_balance())
+print(f"Current balance: {account.get_balance()}")
 
 try:
     account.deposit(-50)
@@ -110,7 +110,7 @@ class BankAccount:
         self.__balance -= amount
         self.__history.append(f"Withdraw: {amount}")
 
-    def get_balance(self) -> str:
+    def get_balance(self) -> float:
         """Returns a string containing the current balance."""
         return self.__balance
 
