@@ -1,7 +1,6 @@
 print("\n 1. Банковский счёт")
 
 class BankAccount:
-
     """A bank account class with an encapsulated balance."""
 
     def __init__(self, owner: str, balance: float) -> None:
@@ -45,7 +44,7 @@ class BankAccount:
 
     def get_balance(self) -> str:
         """Returns a string containing the current balance."""
-        return f"Current balance: {self.__balance}"
+        return self.__balance
 
 account = BankAccount("Alice", 150)
 print(account.get_balance())
@@ -55,19 +54,19 @@ try:
 except ValueError as e:
     print(f"Error: {e}")
 
-print(account.get_balance())
+print(f"Current balance: {account.get_balance()}")
 
 try:
     account.withdraw(500)
 except ValueError as e:
     print(f"Error: {e}")
 
-print(account.get_balance())
+print(f"Current balance: {account.get_balance()}")
 
 
 print("\n 2. Банковский счёт с историей операций")
 class BankAccount:
-    """Класс банковского счёта с историей операций."""
+    """A bank account class with a transaction history."""
 
     def __init__(self, owner: str, balance: float) -> None:
         """
@@ -113,7 +112,7 @@ class BankAccount:
 
     def get_balance(self) -> str:
         """Returns a string containing the current balance."""
-        return f"Current balance: {self.__balance}"
+        return self.__balance
 
     @property
     def history(self) -> list[str]:
@@ -123,7 +122,7 @@ class BankAccount:
 account = BankAccount("Alice", 0)
 account.deposit(150)
 account.withdraw(100)
-print(account.get_balance())
+print(f"Current balance: {account.get_balance()}")
 print("Operation history:")
 for record in account.history:
     print(f"    {record}")
