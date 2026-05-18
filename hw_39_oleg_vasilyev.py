@@ -61,47 +61,69 @@ class Shape(ABC):
     def area(self) -> float:
         """Returns the area of the shape."""
 
-
 class Circle(Shape):
-    """Circle class."""
+    """Circle class with validation via property."""
 
     def __init__(self, radius: float) -> None:
-        """
-        Args:
-            radius: radius of a circle.
-
-        Raises:
-            InvalidSizeError: if the radius is not positive.
-        """
-        if radius <= 0:
-            raise InvalidSizeError("Размер должен быть положительным!")
         self.radius = radius
+
+    @property
+    def radius(self) -> float:
+        """Getter — возвращает радиус."""
+        return self.__radius
+
+    @radius.setter
+    def radius(self, value: float) -> None:
+        """Setter — validates and saves the radius."""
+        if not isinstance(value, int | float):
+            raise TypeError("Вы должны ввести цифры.")
+        if value <= 0:
+            raise InvalidSizeError("Размер должен быть положительным!")
+        self.__radius = value
 
     def area(self) -> float:
         """Returns the area of a circle: π * r²."""
         return pi * self.radius ** 2
 
-
 class Rectangle(Shape):
-    """The Rectangle class."""
+    """A rectangle class with validation via a property."""
 
     def __init__(self, width: float, height: float) -> None:
-        """
-        Args:
-            width: the width of the rectangle.
-            height: the height of the rectangle.
+        self.width = width    # вызывает setter!
+        self.height = height  # вызывает setter!
 
-        Raises:
-            InvalidSizeError: if the width or height is not positive.
-        """
-        if width <= 0 or height <= 0:
+    @property
+    def width(self) -> float:
+        """Getter — returns the width."""
+        return self.__width
+
+    @width.setter
+    def width(self, value: float) -> None:
+        """Setter — validates and preserves the width."""
+        if not isinstance(value, int | float):
+            raise TypeError("Вы должны ввести цифры.")
+        if value <= 0:
             raise InvalidSizeError("Размер должен быть положительным!")
-        self.width = width
-        self.height = height
+        self.__width = value
+
+    @property
+    def height(self) -> float:
+        """Getter — returns the height."""
+        return self.__height
+
+    @height.setter
+    def height(self, value: float) -> None:
+        """Setter — validates and saves the height."""
+        if not isinstance(value, int | float):
+            raise TypeError("Вы должны ввести цифры.")
+        if value <= 0:
+            raise InvalidSizeError("Размер должен быть положительным!")
+        self.__height = value
 
     def area(self) -> float:
         """Returns the area of a rectangle: width * height."""
         return self.width * self.height
+
 
 shapes = [Circle(3), Rectangle(4, 5)]
 for shape in shapes:
@@ -111,6 +133,11 @@ try:
     c = Circle(-5)
 except InvalidSizeError as e:
     print(f"InvalidSizeError: {e}")
+
+try:
+    c = Circle("abc")
+except TypeError as e:
+    print(f"TypeError: {e}")
 
 try:
     r = Rectangle(0, 5)
