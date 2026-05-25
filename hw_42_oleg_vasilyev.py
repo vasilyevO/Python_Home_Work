@@ -1,5 +1,3 @@
-from multiprocessing import connection
-
 print("\n 1. Создание базы")
 
 import pymysql
@@ -18,7 +16,7 @@ config = {
 db_name = "notes_app_121225_ptm_oleg_vasyliev"
 
 class Notes:
-    """Класс для работы с таблицей заметок."""
+    """A class for working with a notes table."""
 
     CREATE_TABLE_QUERY = """
             CREATE TABLE IF NOT EXISTS notes (
@@ -31,16 +29,16 @@ class Notes:
     def __init__(self, cur) -> None:
         """
         Args:
-            cur: курсор подключения к базе данных.
+            cur: database connection cursor.
         """
         self.cur = cur
 
     def create_table(self) -> None:
-        """Создаёт таблицу notes если она не существует."""
+        """Creates a table called 'notes' if it does not exist."""
         self.cur.execute(self.CREATE_TABLE_QUERY)
 
 def main() -> None:
-    """Создаёт базу данных и таблицу заметок."""
+    """Creates a database and a notes table."""
     with pymysql.connect(**config) as conn:
         with conn.cursor() as cur:
             cur.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
@@ -78,7 +76,7 @@ config = {
 db_name = "notes_app_121225_ptm_oleg_vasyliev"
 
 class Notes:
-    """Класс для работы с таблицей заметок."""
+    """A class for working with a notes table."""
 
     CREATE_TABLE_QUERY = """
         CREATE TABLE IF NOT EXISTS notes (
@@ -94,12 +92,12 @@ class Notes:
     def __init__(self, cur) -> None:
         """
         Args:
-            cur: курсор подключения к базе данных.
+            cur: database connection cursor.
         """
         self.cur = cur
 
     def create_table(self) -> None:
-        """Создаёт таблицу notes если она не существует."""
+        """Creates a table called 'notes' if it does not exist."""
         self.cur.execute(self.CREATE_TABLE_QUERY)
 
     def add_note(self, title: str, content: str) -> None:
@@ -110,7 +108,7 @@ class Notes:
         return self.cur.fetchall()
 
 def main() -> None:
-    """Создаёт базу данных и таблицу заметок."""
+    """Creates a database and a notes table."""
     try:
         with pymysql.connect(**config, cursorclass=DictCursor) as conn:
             # Обычный cursor для создания БД и таблицы
@@ -124,8 +122,7 @@ def main() -> None:
                 conn.commit()
                 print(f"Database '{db_name}' created or already exists.")
 
-            # DictCursor только для SELECT
-            with conn.cursor(DictCursor) as dict_cur:
+                    with conn.cursor(DictCursor) as dict_cur:
                 dict_cur.execute(f"USE {db_name}")
                 notes_dict = Notes(dict_cur)
                 result = notes_dict.get_notes()
